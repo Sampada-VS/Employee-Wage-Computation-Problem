@@ -6,14 +6,21 @@ public class EmployeeWage {
 
 	public static void main(String[] args)
 	{
-		int empWage=0;
-		int empHrs=0;
+		int empWage;
+		int empHrs;
 
 		int empCheck=(int)((Math.random()*10)%3);
-		if(empCheck == IS_FULL_TIME)
-			empHrs=8;
-		else if(empCheck == IS_PART_TIME)
-			empHrs=4;
+		switch(empCheck)
+		{
+			case IS_FULL_TIME:
+				empHrs=8;
+				break;
+			case IS_PART_TIME:
+				empHrs=4;
+				break;
+			default:
+				empHrs=0;
+		}
 		empWage=empHrs*RATE_PER_HOUR;
 		System.out.println("Employee daily wage: "+empWage);
 	}
