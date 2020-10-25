@@ -1,6 +1,6 @@
 package com.employeewage;
 
-public class EmployeeWage {
+public class EmployeeWage implements ICalculateWage{
 	public static final int IS_FULL_TIME=1;
 	public static final int IS_PART_TIME=2;
 	
@@ -20,13 +20,7 @@ public class EmployeeWage {
 		for(int i=0;i<numOfCompany;i++)
 			compEmpWageArr[i].setTotalEmpWage(this.calculateWage(compEmpWageArr[i]));
 	}
-	public static void main(String[] args)
-	{
-		EmployeeWage empWageArr=new EmployeeWage();
-		empWageArr.addCompany("Deloitte",20,2,5);
-		empWageArr.addCompany("Microsoft",30,5,30);
-		empWageArr.calculateWage();
-	}
+
 	public int calculateWage(CompanyEmployeeWage companyempwage)
 	{
 		int empHrs;
@@ -68,5 +62,12 @@ public class EmployeeWage {
 		System.out.println("Total employee hours :"+totalEmpHours);
 		System.out.println("Total working days :"+totalWorkingDays);
 		return totalEmpWage;
+	}
+	public static void main(String[] args)
+	{
+		ICalculateWage employeewage =new EmployeeWage();
+		employeewage.addCompany("Deloitte",20,2,5);
+		employeewage.addCompany("Microsoft",30,5,30);
+		employeewage.calculateWage();
 	}
 }
