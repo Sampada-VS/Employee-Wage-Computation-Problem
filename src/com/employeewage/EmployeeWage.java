@@ -9,15 +9,18 @@ public class EmployeeWage implements ICalculateWage{
 	
 	private LinkedList<CompanyEmployeeWage> compEmpWageList;
 	public int numOfCompany=0;
+	private Map<String,CompanyEmployeeWage> companyEmpWageMap;
 	
 	public EmployeeWage()
 	{
 		compEmpWageList=new LinkedList<>();
+		companyEmpWageMap=new HashMap<>();
 	}
 	public void addCompany(String company, int empRatePerHr, int numOfWorkingDays, int maxHrs)
 	{
 		CompanyEmployeeWage companyempwage= new CompanyEmployeeWage(company,empRatePerHr,numOfWorkingDays,maxHrs);
 		compEmpWageList.add(companyempwage);
+		companyEmpWageMap.put(company,companyempwage);
 	}
 	public void calculateWage()
 	{
@@ -27,7 +30,10 @@ public class EmployeeWage implements ICalculateWage{
 			System.out.println(companyempwage);
 		}
 	}
-
+	public int getTotalWage(String company)
+	{
+		return companyEmpWageMap.get(company).totalEmpWage;
+	}
 	public int calculateWage(CompanyEmployeeWage companyempwage)
 	{
 		int totalEmpHours=0;
@@ -67,14 +73,6 @@ public class EmployeeWage implements ICalculateWage{
 				totalEmpWage=totalEmpWage+empWage;
 				System.out.println("Employee daily wage :"+empWage+" Total Employee Hours : "+totalEmpHours);
 			}
-			Dictionary<Integer, String> wage=new Hashtable<Integer, String>();
-			String result="";
-			result="Daily Wage :"+empWage+" Toatal Wage : "+totalEmpWage;
-			wage.put(totalWorkingDays,result);
-			for (Enumeration<String> i=wage.elements();i.hasMoreElements();)
-			{
-				System.out.println("Value in dictionary == "+i.nextElement());
-			}
 		}
 		System.out.println("Total employee hours :"+totalEmpHours);
 		System.out.println("Total working days :"+totalWorkingDays);
@@ -86,5 +84,7 @@ public class EmployeeWage implements ICalculateWage{
 		employeewage.addCompany("Deloitte",10,4,10);
 		employeewage.addCompany("Microsoft",30,5,30);
 		employeewage.calculateWage();
+		System.out.println("=== Total wage for Microsoft company : "+employeewage.getTotalWage("Microsoft")+" ===");
+
 	}
 }
