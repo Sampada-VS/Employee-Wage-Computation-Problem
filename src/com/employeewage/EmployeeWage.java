@@ -9,6 +9,10 @@ public class EmployeeWage {
 
 	public static void main(String[] args)
 	{
+		calculate20Wage();
+	}
+	public static void calculate20Wage()
+	{
 		int empWage;
 		int empHrs;
 		int totalEmpWage=0;
