@@ -14,7 +14,6 @@ class CompanyEmployeeWage {
 		this.numOfWorkingDays=numOfWorkingDays;
 		this.maxHrs=maxHrs;
 		totalEmpWage=0;
-
 	}
 	public void setTotalEmpWage(int totalEmpWage)
 	{

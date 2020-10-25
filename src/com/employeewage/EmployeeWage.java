@@ -1,13 +1,15 @@
 package com.employeewage;
 
-import java.util.LinkedList;
+import java.util.*;
 
 public class EmployeeWage implements ICalculateWage{
+	
 	public static final int IS_FULL_TIME=1;
 	public static final int IS_PART_TIME=2;
 	
 	private LinkedList<CompanyEmployeeWage> compEmpWageList;
 	public int numOfCompany=0;
+	
 	public EmployeeWage()
 	{
 		compEmpWageList=new LinkedList<>();
@@ -30,6 +32,8 @@ public class EmployeeWage implements ICalculateWage{
 	{
 		int totalEmpHours=0;
 		int totalWorkingDays=0;
+		int totalEmpWage=0;
+
 		System.out.println("For company "+companyempwage.company+"======");
 		while (totalEmpHours<companyempwage.maxHrs && totalWorkingDays<companyempwage.numOfWorkingDays)
 		{
@@ -60,7 +64,16 @@ public class EmployeeWage implements ICalculateWage{
 			else
 			{
 				empWage=empHrs*companyempwage.empRatePerHr;
+				totalEmpWage=totalEmpWage+empWage;
 				System.out.println("Employee daily wage :"+empWage+" Total Employee Hours : "+totalEmpHours);
+			}
+			Dictionary<Integer, String> wage=new Hashtable<Integer, String>();
+			String result="";
+			result="Daily Wage :"+empWage+" Toatal Wage : "+totalEmpWage;
+			wage.put(totalWorkingDays,result);
+			for (Enumeration<String> i=wage.elements();i.hasMoreElements();)
+			{
+				System.out.println("Value in dictionary == "+i.nextElement());
 			}
 		}
 		System.out.println("Total employee hours :"+totalEmpHours);
@@ -70,7 +83,7 @@ public class EmployeeWage implements ICalculateWage{
 	public static void main(String[] args)
 	{
 		ICalculateWage employeewage =new EmployeeWage();
-		employeewage.addCompany("Deloitte",20,2,5);
+		employeewage.addCompany("Deloitte",10,4,10);
 		employeewage.addCompany("Microsoft",30,5,30);
 		employeewage.calculateWage();
 	}
