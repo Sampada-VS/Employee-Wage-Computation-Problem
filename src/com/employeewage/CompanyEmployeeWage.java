@@ -13,10 +13,15 @@ class CompanyEmployeeWage {
 		this.empRatePerHr=empRatePerHr;
 		this.numOfWorkingDays=numOfWorkingDays;
 		this.maxHrs=maxHrs;
+		totalEmpWage=0;
+
 	}
 	public void setTotalEmpWage(int totalEmpWage)
 	{
 		this.totalEmpWage=totalEmpWage;
 	}
-
+	public String toString()
+	{
+		return "Total employee wage for company "+company+" is : "+totalEmpWage;
+	}
 }
