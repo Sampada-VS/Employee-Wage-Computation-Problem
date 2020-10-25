@@ -1,3 +1,4 @@
+package com.employeewage;
 
 public class EmployeeWage {
 	public static final int IS_FULL_TIME=1;
@@ -6,7 +7,6 @@ public class EmployeeWage {
 	public static final int NUM_OF_WORKING_DAYS=20;
 	public static final int MAX_HOURS=100;
 
-	
 	public static void main(String[] args)
 	{
 		int empWage;
